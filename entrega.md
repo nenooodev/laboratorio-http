@@ -37,7 +37,7 @@ Date: Mon, 12 Oct 2026 10:54:22 GMT
 Respuestas:
 
 1. Método, destino, campos y contenido: El método es GET y el destino /api/hello sobre el Host localhost:8080. Los campos (cabeceras) son metadatos del intercambio: de petición (Host, User-Agent, Accept) y de respuesta (Content-Type, Content-Length, Date). El contenido es el cuerpo: el JSON {"message":"Hola desde el servidor"}, cuya representación describe Content-Type: application/json.
-2. Estados observados:
+2. Estados observados: 200 en GET /, /api/hello y /health (éxito y cuerpo devuelto); 200 también en HEAD y OPTIONS sobre /api/hello, sin cuerpo en el caso de HEAD; 404 al pedir /no-existe, recurso inexistente; 405 al enviar POST a /api/hello, método no permitido en ese recurso; y 406 al pedir un Accept incompatible con la representación del recurso (Accept: application/json sobre / y Accept: text/html sobre /api/hello). Cada estado resume el resultado de un solo vistazo: 2xx correcto, 4xx error de cliente y qué concreto falló.
 3. Resultado de OPTIONS:
 4. Información que no debe aparecer en errores:
 

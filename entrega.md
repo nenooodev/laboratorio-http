@@ -2,7 +2,7 @@
 
 ## Identificación
 
-- Alumno/a:
+- Alumno/a: Antonio López Gautier
 - Fecha: 12/10/26
 - Java: 25
 - Maven Wrapper: 3.9
@@ -68,8 +68,8 @@ Conclusión contextual:
 
 ## Comprobación final
 
-- [ ] No hay cookies, tokens ni credenciales reales.
-- [ ] No hay rutas o datos personales innecesarios.
-- [ ] Las trazas son texto y están sanitizadas.
-- [ ] Puedo reproducir y explicar todo el contenido.
-- [ ] No he utilizado IA generativa.
+- [x] No hay cookies, tokens ni credenciales reales.
+- [x] No hay rutas o datos personales innecesarios.
+- [x] Las trazas son texto y están sanitizadas.
+- [x] Puedo reproducir y explicar todo el contenido.
+- [x] No he utilizado IA generativa.

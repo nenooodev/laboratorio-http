@@ -47,6 +47,8 @@ cliente -> Tomcat embebido -> DispatcherServlet -> HelloController -> conversor 
 
 Comparación con CGI y FastCGI: En Hello Server el proceso Java con Tomcat embebido permanece activo desde el arranque; cada petición entra en ese mismo proceso y la ejecuta DispatcherServlet con el resto de la cadena. En CGI, en cambio, el servidor web lanzaba un proceso nuevo por petición, que arrancaba el intérprete, ejecutaba el script y terminaba: el código de aplicación no residía en un proceso estable. PHP-FPM/FastCGI mejora CGI usando un pool de procesos PHP preexistentes y un protocolo persistente entre el web server y los workers, pero sigue separando el runtime de PHP del servidor web. El componente que ejecuta el código de aplicación es, en cada caso, distinto: en Spring Boot lo hace la propia JVM del proceso embebido; en FastCGI, los workers de FPM.
 
+Server o X-Powered-By serían como máximo indicios: son cabeceras que la propia aplicación o su contenedor pueden escribir, omitir o falsear (se pueden ocultar por seguridad o añadir por capas intermedias como CDNs y proxies). No prueban qué proceso ejecuta el código ni cómo está montada la arquitectura; solo declaran lo que quien genera la respuesta dice de sí mismo. Para afirmar mecanismos hace falta observar el comportamiento (como las trazas de este laboratorio), no fiarse de un banner.
+
 ## 5. Spring Boot y Laravel
 
 | Criterio | Spring Boot | Laravel |

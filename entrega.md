@@ -21,12 +21,22 @@
 Incluye solo fragmentos necesarios y sustituye secretos por `<REDACTED>`.
 
 ```http
-<traza sanitizada>
+GET /api/hello HTTP/1.1
+Host: localhost:8080
+User-Agent: curl/8.22.0
+Accept: */*
+
+HTTP/1.1 200
+Content-Type: application/json
+Content-Length: 36
+Date: Mon, 12 Oct 2026 10:54:22 GMT
+
+{"message":"Hola desde el servidor"}
 ```
 
 Respuestas:
 
-1. Método, destino, campos y contenido:
+1. Método, destino, campos y contenido: El método es GET y el destino /api/hello sobre el Host localhost:8080. Los campos (cabeceras) son metadatos del intercambio: de petición (Host, User-Agent, Accept) y de respuesta (Content-Type, Content-Length, Date). El contenido es el cuerpo: el JSON {"message":"Hola desde el servidor"}, cuya representación describe Content-Type: application/json.
 2. Estados observados:
 3. Resultado de OPTIONS:
 4. Información que no debe aparecer en errores:

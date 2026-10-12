@@ -63,7 +63,7 @@ Conclusión contextual:
 
 1. Problema que resuelve: QUERY cubre el hueco entre GET y POST. GET lleva la consulta en la URI, que tiene límites de tamaño, se codifica mal para datos complejos y se registra más fácil en logs y marcapáginas. POST sí lleva la consulta en el cuerpo, pero no declara que la operación sea segura e idempotente. QUERY permite enviar la consulta en el cuerpo como POST, pero el método está definido explícitamente como seguro e idempotente (RFC 10008, sección 5.1).
 2. Seguridad e idempotencia: Es seguro porque el cliente no pide ni espera un cambio en el estado del recurso objetivo: solo pide que se procese la consulta. Es idempotente porque repetir la misma QUERY produce el mismo efecto que ejecutarla una vez, de modo que puede reintentarse tras un fallo de conexión sin riesgo de mutaciones parciales. El registro de IANA del RFC 10008 lo declara así: Safe = yes, Idempotent = yes.
-3. Contenido y `Content-Type`:
+3. Contenido y `Content-Type`: A diferencia de GET, cuyo cuerpo no tiene semántica definida, QUERY espera contenido: ese cuerpo es la consulta, y su media tipo describe cómo interpretarla. El servidor debe fallar la petición si falta Content-Type o si es inconsistente con el contenido (RFC 10008, sección 2); por ejemplo, 400 si no hay media tipo, 415 si el recurso no soporta ese formato, y Accept-Query en la respuesta anuncia los formatos aceptados.
 4. Verificaciones necesarias para adoptarlo:
 
 ## Comprobación final

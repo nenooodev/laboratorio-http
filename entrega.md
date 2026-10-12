@@ -51,11 +51,11 @@ Comparación con CGI y FastCGI:
 
 | Criterio | Spring Boot | Laravel |
 |---|---|---|
-| Lenguaje y runtime | | |
-| Ejecución | | |
-| Tipado y pruebas | | |
-| Despliegue | | |
-| Papel didáctico | | |
+| Lenguaje y runtime | Java sobre la JVM; en este laboratorio, Java 25 | PHP (runtime PHP-FPM o similar) |
+| Ejecución | Proceso único persistente con Tomcat embebido; DispatcherServlet enruta al controlador | Servidor web + FPM; las peticiones se despachan al framework vía FastCGI |
+| Tipado y pruebas | Tipado estático fuerte; pruebas con JUnit y Spring Test (como la suite de Hello Server) | Tipado dinámico; pruebas con PHPUnit |
+| Despliegue | Empaquetado ejecutable (jar) autocontenido con el servidor dentro | Árbol de archivos servido por Apache/Nginx + PHP, habitualmente con despliegues compartidos |
+| Papel didáctico | Ejemplo de ejecución en servidor JVM: recorrido HTTP → controlador → representación | Contraste con el modelo PHP típico del módulo |
 
 Conclusión contextual:
 

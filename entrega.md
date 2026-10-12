@@ -55,9 +55,10 @@ Comparación con CGI y FastCGI:
 | Ejecución | Proceso único persistente con Tomcat embebido; DispatcherServlet enruta al controlador | Servidor web + FPM; las peticiones se despachan al framework vía FastCGI |
 | Tipado y pruebas | Tipado estático fuerte; pruebas con JUnit y Spring Test (como la suite de Hello Server) | Tipado dinámico; pruebas con PHPUnit |
 | Despliegue | Empaquetado ejecutable (jar) autocontenido con el servidor dentro | Árbol de archivos servido por Apache/Nginx + PHP, habitualmente con despliegues compartidos |
-| Papel didáctico | Ejemplo de ejecución en servidor JVM: recorrido HTTP → controlador → representación | Contraste con el modelo PHP típico del módulo |
+| Papel didáctico | Permite estudiar el ciclo de una petición HTTP, desde su recepción por el servidor embebido hasta su procesamiento por el controlador y la generación de la respuesta | Permite contrastar el modelo de ejecución habitual de PHP, identificando la interacción entre el servidor web, PHP-FPM y el framework durante el procesamiento de las peticiones |
 
-Conclusión contextual: Elegiría Spring Boot cuando el proyecto encaja con la JVM, se quiere un proceso embebido autocontenido y tipado estático con un ecosistema de pruebas robusto, como este Hello Server que se arranca con un solo comando. Elegiría Laravel cuando el equipo trabaja con PHP, se prioriza la velocidad de desarrollo de CRUDs y se acepta el modelo cliente-servidor con FPM que ya es habitual en hosting compartido. No hay una opción mejor en abstracto: depende del lenguaje del equipo, del entorno de despliegue previsto y del peso que tenga el tipo estático en el proyecto.
+
+Conclusión contextual: Elegiría Spring Boot cuando el proyecto encaja con la JVM, se quiere un proceso embebido autocontenido y tipado estático con un ecosistema de pruebas robusto, como este Hello Server que se arranca con un solo comando. Elegiría Laravel cuando el equipo trabaja con PHP, se prioriza la velocidad de desarrollo de CRUDs y se acepta el modelo cliente-servidor con FPM (que ya es habitual en hosting compartido, por ejemplo).
 
 ## 6. QUERY
 

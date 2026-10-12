@@ -42,7 +42,7 @@ Respuestas:
 ## 4. Recorrido y mecanismos
 
 ```text
-cliente -> ... -> respuesta
+cliente -> Tomcat embebido -> DispatcherServlet -> HelloController -> conversor JSON -> respuesta
 ```
 
 Comparación con CGI y FastCGI:

@@ -36,7 +36,7 @@ Respuestas:
 1. Trabajo del navegador: Al abrir http://localhost:8080/ el navegador envía GET / y recibe el HTML con estado 200 y Content-Type text/html;charset=UTF-8. En la pestaña Red aparece esa petición del documento; el navegador parsea el HTML, construye el árbol DOM y pinta la página. Nada de eso ejecuta Java: el navegador solo interpreta la representación recibida.
 2. Trabajo del servidor: El proceso Java (Spring Boot con Tomcat embebido) aceptó la conexión, DispatcherServlet recibió la petición, HelloController.home() construyó la cadena HTML y la devolvió con el estado y las cabeceras correspondientes. Todo el código de aplicación se ejecutó allí, en el servidor, antes de que el navegador viera un solo byte de HTML.
 3. Modificación local del HTML: Las herramientas del navegador editan solo la copia en memoria del cliente (el DOM local). El HTML que sirve home() vive en el código Java del servidor y no se toca; en la siguiente petición vuelve a llegarse la misma cadena original. Es como subrayar un libro prestado: cambia tu ejemplar, no el del autor.
-4. Validación duplicada:
+4. Validación duplicada: El navegador podría validar en cliente un campo de un formulario (por ejemplo, que un email tenga formato válido) para dar respuesta inmediata sin viaje al servidor; pero esa validación es solo experiencia, no seguridad, porque cualquiera puede saltársela con curl. Cualquier regla que importe para la integridad de los datos debe repetirse en el servidor, que es quien decide de verdad qué es válido.
 5. Tres ventajas y dos costes:
 
 ## 4. Recorrido y mecanismos

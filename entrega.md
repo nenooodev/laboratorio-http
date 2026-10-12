@@ -57,7 +57,7 @@ Comparación con CGI y FastCGI:
 | Despliegue | Empaquetado ejecutable (jar) autocontenido con el servidor dentro | Árbol de archivos servido por Apache/Nginx + PHP, habitualmente con despliegues compartidos |
 | Papel didáctico | Ejemplo de ejecución en servidor JVM: recorrido HTTP → controlador → representación | Contraste con el modelo PHP típico del módulo |
 
-Conclusión contextual:
+Conclusión contextual: Elegiría Spring Boot cuando el proyecto encaja con la JVM, se quiere un proceso embebido autocontenido y tipado estático con un ecosistema de pruebas robusto, como este Hello Server que se arranca con un solo comando. Elegiría Laravel cuando el equipo trabaja con PHP, se prioriza la velocidad de desarrollo de CRUDs y se acepta el modelo cliente-servidor con FPM que ya es habitual en hosting compartido. No hay una opción mejor en abstracto: depende del lenguaje del equipo, del entorno de despliegue previsto y del peso que tenga el tipo estático en el proyecto.
 
 ## 6. QUERY
 

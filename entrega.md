@@ -12,9 +12,9 @@
 
 | Endpoint | Estado | Content-Type | Método Java | Explicación |
 |---|---:|---|---|---|
-| `/` | | | | |
-| `/api/hello` | | | | |
-| `/health` | | | | |
+| `/` | 200 | `text/html;charset=UTF-8` | `home()` | Cadena HTML construida en el servidor; el `produces` del mapeo fija `text/html` |
+| `/api/hello` | 200 | `application/json` | `hello()` | Mapa Java serializado a JSON por el conversor de mensajes (Jackson) |
+| `/health` | 200 | `application/json` | `health()` | Mapa con el estado del ejemplo, serializado a JSON por el mismo conversor |
 
 ## 2. Trazas y errores
 

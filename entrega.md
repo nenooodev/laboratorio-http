@@ -12,9 +12,13 @@
 
 | Endpoint | Estado | Content-Type | Método Java | Explicación |
 |---|---:|---|---|---|
-| `/` | | | | |
-| `/api/hello` | | | | |
-| `/health` | | | | |
+| `/` | 200 | `text/html;charset=UTF-8` | `home()` | Cadena HTML construida en el servidor; el `produces` del mapeo fija `text/html` |
+| `/api/hello` | 200 | `application/json` | `hello()` | Mapa Java serializado a JSON por el conversor de mensajes (Jackson) |
+| `/health` | 200 | `application/json` | `health()` | Mapa con el estado del ejemplo, serializado a JSON por el mismo conversor |
+
+¿Por qué `/` devuelve HTML y `/api/hello` JSON si están en el mismo controlador?
+
+El reparto no lo decide el controlador en su conjunto, sino el mapeo de cada método. `home()` declara produces = text/html y devuelve una cadena que ya es HTML, así que Spring la envía como tal. `hello()` no declara produces y devuelve un mapa Java: el tipo de retorno activa el conversor de mensajes (Jackson), que serializa el mapa a JSON y lo envía con application/json. El mismo camino sigue `health()`. En resumen: método mapeado, tipo de retorno y declaraciones de produces determinan la representación de cada respuesta.
 
 ## 2. Trazas y errores
 

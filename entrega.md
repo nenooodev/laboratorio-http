@@ -37,9 +37,9 @@ Date: Mon, 12 Oct 2026 10:54:22 GMT
 Respuestas:
 
 1. Método, destino, campos y contenido: El método es GET y el destino /api/hello sobre el Host localhost:8080. Los campos (cabeceras) son metadatos del intercambio: de petición (Host, User-Agent, Accept) y de respuesta (Content-Type, Content-Length, Date). El contenido es el cuerpo: el JSON {"message":"Hola desde el servidor"}, cuya representación describe Content-Type: application/json.
-2. Estados observados: 200 en GET /, /api/hello y /health (éxito y cuerpo devuelto); 200 también en HEAD y OPTIONS sobre /api/hello, sin cuerpo en el caso de HEAD; 404 al pedir /no-existe, recurso inexistente; 405 al enviar POST a /api/hello, método no permitido en ese recurso; y 406 al pedir un Accept incompatible con la representación del recurso (Accept: application/json sobre / y Accept: text/html sobre /api/hello). Cada estado resume el resultado de un solo vistazo: 2xx correcto, 4xx error de cliente y qué concreto falló.
-3. Resultado de OPTIONS: Sí. La respuesta observada a OPTIONS /api/hello fue 200 con Allow: GET,HEAD,OPTIONS y Content-Length: 0. Es la evidencia concreta de este servidor (Spring Boot con el mapping de GET de ese recurso); no implica que todos los servidores respondan igual a OPTIONS.
-4. Información que no debe aparecer en errores: rutas internas y estructura de directorios del servidor, versiones exactas de software (permite buscar CVEs conocidos), trazas de pila del backend, credenciales, tokens o cookies, y datos de otras peticiones o usuarios. El 404 observado solo incluye timestamp, status, error y path pedido, que son suficientes para diagnosticar sin abrir la caja negra del servidor. En este laboratorio no aparecen cookies, tokens ni Authorization, y aun así la sanitización se aplica por defecto.
+2. Estados observados: 200 en GET /api/hello  (éxito y cuerpo devuelto); 200 también en OPTIONS sobre /api/hello, sin  404 al pedir /no-existe, recurso inexistente. Cada estado resume el resultado de un solo vistazo: 2xx correcto, 4xx error de cliente y qué concreto falló.
+3. Sí. La respuesta observada a OPTIONS /api/hello fue 200 con Allow: GET,HEAD,OPTIONS y Content-Length: 0.
+4 Rutas internas y estructura de directorios del servidor, versiones exactas de software, trazas de pila del backend, credenciales, tokens o cookies, y datos de otras peticiones o usuarios.
 
 ## 3. Frontera cliente-servidor
 

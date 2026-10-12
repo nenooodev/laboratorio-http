@@ -33,7 +33,7 @@ Respuestas:
 
 ## 3. Frontera cliente-servidor
 
-1. Trabajo del navegador:
+1. Trabajo del navegador: Al abrir http://localhost:8080/ el navegador envía GET / y recibe el HTML con estado 200 y Content-Type text/html;charset=UTF-8. En la pestaña Red aparece esa petición del documento; el navegador parsea el HTML, construye el árbol DOM y pinta la página. Nada de eso ejecuta Java: el navegador solo interpreta la representación recibida.
 2. Trabajo del servidor:
 3. Modificación local del HTML:
 4. Validación duplicada:

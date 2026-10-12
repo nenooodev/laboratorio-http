@@ -25,15 +25,25 @@ El reparto no lo decide el controlador en su conjunto, sino el mapeo de cada mé
 Incluye solo fragmentos necesarios y sustituye secretos por `<REDACTED>`.
 
 ```http
-<traza sanitizada>
+GET /api/hello HTTP/1.1
+Host: localhost:8080
+User-Agent: curl/8.22.0
+Accept: */*
+
+HTTP/1.1 200
+Content-Type: application/json
+Content-Length: 36
+Date: Mon, 12 Oct 2026 10:54:22 GMT
+
+{"message":"Hola desde el servidor"}
 ```
 
 Respuestas:
 
-1. Método, destino, campos y contenido:
-2. Estados observados:
-3. Resultado de OPTIONS:
-4. Información que no debe aparecer en errores:
+1. Método, destino, campos y contenido: El método es GET y el destino /api/hello sobre el Host localhost:8080. Los campos (cabeceras) son metadatos del intercambio: de petición (Host, User-Agent, Accept) y de respuesta (Content-Type, Content-Length, Date). El contenido es el cuerpo: el JSON {"message":"Hola desde el servidor"}, cuya representación describe Content-Type: application/json.
+2. Estados observados: 200 en GET /api/hello  (éxito y cuerpo devuelto); 200 también en OPTIONS sobre /api/hello, sin  404 al pedir /no-existe, recurso inexistente. Cada estado resume el resultado de un solo vistazo: 2xx correcto, 4xx error de cliente y qué concreto falló.
+3. Sí. La respuesta observada a OPTIONS /api/hello fue 200 con Allow: GET,HEAD,OPTIONS y Content-Length: 0.
+4 Rutas internas y estructura de directorios del servidor, versiones exactas de software, trazas de pila del backend, credenciales, tokens o cookies, y datos de otras peticiones o usuarios.
 
 ## 3. Frontera cliente-servidor
 

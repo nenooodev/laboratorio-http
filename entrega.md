@@ -69,13 +69,14 @@ Server o X-Powered-By son cabeceras que la propia aplicación o su contenedor pu
 
 | Criterio | Spring Boot | Laravel |
 |---|---|---|
-| Lenguaje y runtime | | |
-| Ejecución | | |
-| Tipado y pruebas | | |
-| Despliegue | | |
-| Papel didáctico | | |
+| Lenguaje y runtime | Java sobre la JVM; en este laboratorio, Java 25 | PHP (runtime PHP-FPM o similar) |
+| Ejecución | Proceso único persistente con Tomcat embebido; DispatcherServlet enruta al controlador | Servidor web + FPM; las peticiones se despachan al framework vía FastCGI |
+| Tipado y pruebas | Tipado estático fuerte; pruebas con JUnit y Spring Test (como la suite de Hello Server) | Tipado dinámico; pruebas con PHPUnit |
+| Despliegue | Empaquetado ejecutable (jar) autocontenido con el servidor dentro | Árbol de archivos servido por Apache/Nginx + PHP, habitualmente con despliegues compartidos |
+| Papel didáctico | Permite estudiar el ciclo de una petición HTTP, desde su recepción por el servidor embebido hasta su procesamiento por el controlador y la generación de la respuesta | Permite contrastar el modelo de ejecución habitual de PHP, identificando la interacción entre el servidor web, PHP-FPM y el framework durante el procesamiento de las peticiones |
 
-Conclusión contextual:
+
+Conclusión contextual: Elegiría Spring Boot cuando el proyecto encaja con la JVM, se quiere un proceso embebido autocontenido y tipado estático con un ecosistema de pruebas robusto, como este Hello Server que se arranca con un solo comando. Elegiría Laravel cuando el equipo trabaja con PHP, se prioriza la velocidad de desarrollo de CRUDs y se acepta el modelo cliente-servidor con FPM (que ya es habitual en hosting compartido, por ejemplo).
 
 ## 6. QUERY
 
